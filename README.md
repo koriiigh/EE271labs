@@ -1,5 +1,5 @@
 EE 271 — DE1-SoC Labs
-This repository contains my EE 271 lab work on the Terasic DE1-SoC FPGA board using SystemVerilog, Quartus, and ModelSim. Each lab folder includes source files, constraints/pin assignments, and (where applicable) a testbench.
+This repository contains my EE 271 lab work on the Terasic DE1-SoC FPGA board using SystemVerilog, Quartus and ModelSim. Each lab folder includes source files, constraints/pin assignments, and (where applicable) a testbench.
 Note on Lab 8: I chose to implement Frogger for the final project. Details below.
 Repo Structure
 EE271labs/
