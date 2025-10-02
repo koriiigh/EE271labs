@@ -1,0 +1,198 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dU:/EE271labs/Lab1/Lab1_files
+vDE1_SoC
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 !s110 1738002220
+!i10b 1
+!s100 BY=WTYM6AO8O1P;3PR7jc2
+I>mnKjEdAQMb10BX>GzDn=0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 !s105 DE1_SoC_sv_unit
+S1
+Z4 dU:/EE271labs/Lab3/Labfiles
+Z5 w1737958834
+Z6 8./DE1_SoC.sv
+Z7 F./DE1_SoC.sv
+L0 2
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1738002220.000000
+Z10 !s107 ./DE1_SoC.sv|
+Z11 !s90 -reportprogress|300|./DE1_SoC.sv|
+!i113 1
+Z12 tCvgOpt 0
+n@d@e1_@so@c
+vDE1_SoC_testbench
+R0
+R1
+!i10b 1
+!s100 4XHXaN>f_TKm_<A>G2MEO2
+I;fKiZCO@VEcM^J`9N^KNU1
+R2
+R3
+S1
+R4
+R5
+R6
+R7
+L0 23
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+n@d@e1_@so@c_testbench
+vmux2_1
+R0
+Z13 !s110 1738002219
+!i10b 1
+!s100 db@k@fnga:kY6M:UDM?iV1
+IJ>QNS`gdkcliNLo;gQk_83
+R2
+Z14 !s105 mux2_1_sv_unit
+S1
+R4
+Z15 w1736381684
+Z16 8./mux2_1.sv
+Z17 F./mux2_1.sv
+L0 1
+R8
+r1
+!s85 0
+31
+Z18 !s108 1738002219.000000
+Z19 !s107 ./mux2_1.sv|
+Z20 !s90 -reportprogress|300|./mux2_1.sv|
+!i113 1
+R12
+vmux2_1_testbench
+R0
+R13
+!i10b 1
+!s100 ;Q2gW>FYfl;QCJl]M7H_C3
+I^k<WzC<=VM^F8hV^ef;073
+R2
+R14
+S1
+R4
+R15
+R16
+R17
+L0 8
+R8
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R12
+vmux4_1
+R0
+R1
+!i10b 1
+!s100 ]HmBU4IjTdg;eQQA:z@RH3
+ID<J?LcEZDQ>Hbke<<jm0D1
+R2
+Z21 !s105 mux4_1_sv_unit
+S1
+R4
+Z22 w1736383090
+Z23 8./mux4_1.sv
+Z24 F./mux4_1.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R18
+Z25 !s107 ./mux4_1.sv|
+Z26 !s90 -reportprogress|300|./mux4_1.sv|
+!i113 1
+R12
+vmux4_1_testbench
+R0
+R1
+!i10b 1
+!s100 3@W7`8LoCfjJ@ckNGnEBO1
+IXInO?dmeYZOD_z4KM?3]l3
+R2
+R21
+S1
+R4
+R22
+R23
+R24
+L0 9
+R8
+r1
+!s85 0
+31
+R18
+R25
+R26
+!i113 1
+R12
+vNordstrom
+R0
+R1
+!i10b 1
+!s100 PNcg0UMXWN5F5eXAmRRST1
+I1>zC>RBCVEFAX3D^L=Y6k3
+R2
+Z27 !s105 Nordstrom_sv_unit
+S1
+R4
+Z28 w1738002186
+Z29 8./Nordstrom.sv
+Z30 F./Nordstrom.sv
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+Z31 !s107 ./Nordstrom.sv|
+Z32 !s90 -reportprogress|300|./Nordstrom.sv|
+!i113 1
+R12
+n@nordstrom
+vNordstrom_testbench
+R0
+R1
+!i10b 1
+!s100 CHEAOZNJJ_gQdnDgfd42?3
+IF6Q1@liIhIgM;?dWkWCn_1
+R2
+R27
+S1
+R4
+R28
+R29
+R30
+L0 28
+R8
+r1
+!s85 0
+31
+R9
+R31
+R32
+!i113 1
+R12
+n@nordstrom_testbench

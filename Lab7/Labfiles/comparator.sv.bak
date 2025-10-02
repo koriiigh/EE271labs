@@ -1,0 +1,31 @@
+module comparator(out, A, B);
+	input logic [9:0] A,B;
+	output logic out;
+	
+	always_comb begin
+		out = A>B;
+	end
+endmodule
+
+module comparator_testbench();
+	logic [9:0] A,B;
+	logic out;
+	comparator dut(.out, A, B);
+	parameter delay = 5;
+	
+
+	initial begin
+		 A = 10'b0001110010;
+		 B = 10'b0001110010;
+		 #delay
+		 A = 10'b1001000100;
+		 B = 10'b0111111000;
+		 #delay
+		 A = 10'b1010001001;
+		 B = 10'b0100000110;
+		 #delay
+		 A = 10'b0011111001;
+		 B = 10'b0011010111;
+		 #delay
+	end
+endmodule 

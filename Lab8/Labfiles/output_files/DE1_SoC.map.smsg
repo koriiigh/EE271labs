@@ -1,0 +1,3 @@
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Warning (10034): Output port "LEDR" at DE1_SoC.sv(4) has no driver File: U:/EE271labs/Lab8/Labfiles/DE1_SoC.sv Line: 4
+Warning (10034): Output port "lane15" at CarController.sv(7) has no driver File: U:/EE271labs/Lab8/Labfiles/CarController.sv Line: 7

@@ -1,0 +1,9 @@
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Warning (10273): Verilog HDL warning at seg7.sv(18): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/seg7.sv Line: 18
+Warning (10273): Verilog HDL warning at FredHouse_display.sv(65): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/FredHouse_display.sv Line: 65
+Warning (10273): Verilog HDL warning at FredHouse_display.sv(66): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/FredHouse_display.sv Line: 66
+Warning (10273): Verilog HDL warning at FredHouse_display.sv(67): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/FredHouse_display.sv Line: 67
+Warning (10273): Verilog HDL warning at FredHouse_display.sv(68): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/FredHouse_display.sv Line: 68
+Warning (10273): Verilog HDL warning at FredHouse_display.sv(69): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/FredHouse_display.sv Line: 69
+Warning (10273): Verilog HDL warning at FredHouse_display.sv(70): extended using "x" or "z" File: U:/EE271labs/Lab6/Labfiles/FredHouse_display.sv Line: 70
+Warning (10034): Output port "LEDR[0]" at DE1_SoC.sv(4) has no driver File: U:/EE271labs/Lab6/Labfiles/DE1_SoC.sv Line: 4

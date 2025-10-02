@@ -1,0 +1,30 @@
+module LFSR (Q, CLOCK_50, reset);
+	output logic [9:0] Q;
+	input logic CLOCK_50, reset;
+	
+	xnorQ = (Q[9] ~| Q[6]);
+	
+	always_ff @(posedge CLOCK_50) begin
+		if (reset)
+			Q<= 10'b0000000000;
+		else
+			Q <= {xnorQ, Q[9:1]};
+	end
+
+module LSFR_testbench();
+	logic [9:0] Q;
+	logic CLOCK_50, reset;
+	
+	LSFR dut(.Q, .CLOCK_50, .reset);
+	
+	parameter CLOCK_PERIOD = 20;
+	initial begin 
+		 CLOCK_50 = 0; 
+		 forever #(CLOCK_PERIOD/2) CLOCK_50 = ~CLOCK_50; 
+	end
+	
+	initial begin
+		reset<= 1; repeat(10)@(posedge CLOCK_50);
+		reset<= 0; repeat(15)@(posedge CLOCK_50);
+		
+	end

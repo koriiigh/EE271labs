@@ -1,0 +1,60 @@
+module CarController(clock, globalReset, difficultySel,carLane5, carLane6, carLane7, carLane8, carLane9); 
+
+	input logic clock;
+	input logic globalReset;
+	input logic difficultySel;
+	output logic [15:0] carLane5;
+	output logic [15:0] carLane6;
+	output logic [15:0] carLane7; 
+	output logic [15:0] carLane8; 
+	output logic [15:0] carLane9;
+
+	parameter EASY_SPEED = 16'd15; 
+	parameter HARD_SPEED = 16'd5; 
+ 
+	logic [15:0] lane5_reg, lane6_reg, lane7_reg, lane8_reg, lane9_reg; 
+	logic [15:0] moveCounter; 
+	logic [15:0] moveThreshold; 
+ 
+	assign carLane5 = lane5_reg; 
+	assign carLane6 = lane6_reg; 
+	assign carLane7 = lane7_reg; 
+	assign carLane8 = lane8_reg; 
+	assign carLane9 = lane9_reg; 
+ 
+always_comb begin 
+    if (!difficultySel) 
+        moveThreshold = EASY_SPEED; 
+    else 
+        moveThreshold = HARD_SPEED; 
+end 
+ 
+always_ff @(posedge clock) begin 
+    if (globalReset) begin 
+        moveCounter <= 16'd0; 
+  
+        lane5_reg <= 16'b1000_1000_1000_1000; 
+        lane6_reg <= 16'b0001_0001_0001_0001; 
+        lane7_reg <= 16'b1000_0000_0000_0001; 
+        lane8_reg <= 16'b1010_0010_0010_0010; 
+        lane9_reg <= 16'b1000_1000_1000_1000; 
+    end 
+    else begin 
+
+        moveCounter <= moveCounter + 1'b1; 
+ 
+
+        if (moveCounter >= moveThreshold) begin 
+            moveCounter <= 16'd0; 
+ 
+            lane5_reg <= {lane5_reg[14:0], lane5_reg[15]}; 
+            lane6_reg <= {lane6_reg[14:0], lane6_reg[15]}; 
+            lane7_reg <= {lane7_reg[14:0], lane7_reg[15]}; 
+            lane8_reg <= {lane8_reg[14:0], lane8_reg[15]}; 
+            lane9_reg <= {lane9_reg[14:0], lane9_reg[15]}; 
+        end 
+    end 
+end 
+  
+
+endmodule 

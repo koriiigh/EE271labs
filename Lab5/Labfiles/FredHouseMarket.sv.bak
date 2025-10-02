@@ -1,0 +1,62 @@
+module FredHouse (HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, SW, LEDR); 
+
+// Lab #3 signals 
+input logic [9:0] SW;
+logic stolen, discounted;
+output logic [9:0] LEDR;
+output logic [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+ 
+// Example stolen/discount logic from your earlier code: 
+// stolen     = ~(SW[8] | SW[7] | SW[0]) | (SW[9] & SW[7] & ~SW[0]); 
+// discounted = (~SW[9] & ~SW[8]) | (SW[9] & ~SW[7]); 
+ 
+always_comb begin 
+    stolen     = ~(SW[8] | SW[7] | SW[0]) | (SW[9] & SW[7] & ~SW[0]); 
+    discounted = (~SW[9] & ~SW[8]) | (SW[9] & ~SW[7]); 
+end 
+ 
+// Assign to LEDR 
+assign LEDR[0] = stolen; 
+assign LEDR[1] = discounted; 
+assign LEDR[9:2] = 8'b0;  // rest off 
+ 
+// Instantiate Fred's 6-digit display 
+fred_display myFredDisp ( 
+    .upc_code(SW[9:7]), 
+    .HEX5(HEX5), .HEX4(HEX4), .HEX3(HEX3), 
+    .HEX2(HEX2), .HEX1(HEX1), .HEX0(HEX0) 
+); 
+  
+
+endmodule 
+
+// //-------------------------------------------------------------- // 4) Testbench: "freds_system_tb" // // - Sweeps through 0..7 on SW[9:7] (the product codes) // - Toggles SW[0] (the "sale" bit) for each code // - Observes LEDR[1:0] and HEX5..HEX0 in simulation //-------------------------------------------------------------- module freds_system_tb(); 
+
+logic [9:0] SW; 
+wire  [9:0] LEDR; 
+wire  [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5; 
+ 
+// DUT 
+freds_system dut ( 
+    .SW(SW), 
+    .LEDR(LEDR), 
+    .HEX0(HEX0), .HEX1(HEX1), .HEX2(HEX2), 
+    .HEX3(HEX3), .HEX4(HEX4), .HEX5(HEX5) 
+); 
+ 
+integer i; 
+initial begin 
+    SW = 10'b0000000000; 
+ 
+    // We'll try all 8 product codes plus sale bit toggling 
+    for(i = 0; i < 16; i++) begin 
+        SW[9:7] = i[3:1];  // product code in bits 9..7 
+        SW[0]   = i[0];    // sale bit 
+        #10; 
+    end 
+ 
+    $stop; 
+end 
+  
+
+endmodule

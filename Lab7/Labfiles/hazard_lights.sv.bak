@@ -1,0 +1,106 @@
+module hazard_lights (clk, reset, wind, ights);
+input logic clk;
+input logic reset;
+input logic [1:0] wind;
+output logic [2:0] lights;
+
+enum { 
+    Calm0, 
+    Calm1, 
+    R2L0, 
+    R2L1, 
+    R2L2, 
+    L2R0, 
+    L2R1, 
+    L2R2 
+} ps, ns; 
+ 
+always_ff @(posedge clk) begin 
+    if (reset) 
+        ps <= Calm0; 
+    else 
+        ps <= ns; 
+end 
+ 
+
+always_comb begin 
+    ns = ps; 
+ 
+    case (ps) 
+
+        Calm0: begin 
+            if      (wind == 2'b00) ns = Calm1;  
+            else if (wind == 2'b01) ns = R2L0;    
+            else if (wind == 2'b10) ns = L2R0;    
+            else                    ns = Calm0;   
+        end 
+ 
+        Calm1: begin 
+            if      (wind == 2'b00) ns = Calm0; 
+            else if (wind == 2'b01) ns = R2L0; 
+            else if (wind == 2'b10) ns = L2R0; 
+            else                    ns = Calm1; 
+        end 
+ 
+        R2L0: begin 
+            if      (wind == 2'b01) ns = R2L1; 
+            else if (wind == 2'b10) ns = L2R0; 
+            else if (wind == 2'b00) ns = Calm0; 
+            else                    ns = R2L0; 
+        end 
+ 
+        R2L1: begin 
+            if      (wind == 2'b01) ns = R2L2; 
+            else if (wind == 2'b10) ns = L2R0; 
+            else if (wind == 2'b00) ns = Calm0; 
+            else                    ns = R2L1; 
+        end 
+ 
+        R2L2: begin 
+            if      (wind == 2'b01) ns = R2L0; 
+            else if (wind == 2'b10) ns = L2R0; 
+            else if (wind == 2'b00) ns = Calm0; 
+            else                    ns = R2L2; 
+        end 
+ 
+        L2R0: begin 
+            if      (wind == 2'b10) ns = L2R1; 
+            else if (wind == 2'b01) ns = R2L0; 
+            else if (wind == 2'b00) ns = Calm0; 
+            else                    ns = L2R0; 
+        end 
+ 
+        L2R1: begin 
+            if      (wind == 2'b10) ns = L2R2; 
+            else if (wind == 2'b01) ns = R2L0; 
+            else if (wind == 2'b00) ns = Calm0; 
+            else                    ns = L2R1; 
+        end 
+ 
+        L2R2: begin 
+            if      (wind == 2'b10) ns = L2R0; 
+            else if (wind == 2'b01) ns = R2L0; 
+            else if (wind == 2'b00) ns = Calm0; 
+            else                    ns = L2R2; 
+        end 
+ 
+    endcase 
+end 
+ 
+
+	always_comb 
+		begin case (ps) Calm0: lights = 3'b101;
+							 Calm1: lights = 3'b010;
+							 R2L0: lights = 3'b001;
+							 R2L1: lights = 3'b010;
+							 R2L2: lights = 3'b100; 
+							 L2R0: lights = 3'b100; 
+							 L2R1: lights = 3'b010; 
+							 L2R2: lights = 3'b001; 
+		endcase 
+	end 
+  
+
+endmodule 
+
+ 

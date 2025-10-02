@@ -1,0 +1,26 @@
+module VictoryCounter(clock, globalReset, frogAtBottom, score, HEX0); 
+	input logic clock;
+	input logic globalReset;
+	input logic frogAtBottom;
+	output logic [3:0] score;
+	output logic [6:0] HEX0;
+
+logic [3:0] score_reg; 
+ 
+always_ff @(posedge clock) begin 
+    if (globalReset) begin 
+        score_reg <= 4'd0; 
+    end 
+    else begin 
+        if (frogAtBottom) begin 
+            score_reg <= score_reg + 1'b1; 
+        end 
+    end 
+end 
+ 
+
+	assign score = score_reg; 
+ 
+  
+
+endmodule 

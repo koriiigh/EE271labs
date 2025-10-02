@@ -1,0 +1,11 @@
+module FroggerGame(clock, globalReset, difficultySel, keyLeft, keyRight, keyUp, keyDown, RedPixels, GrnPixels, HEX0); 
+	input logic clock;
+	input logic globalReset;
+	input logic difficultySel;
+	input logic keyLeft;
+	input logic keyRight;
+	input logic keyUp;
+	input logic keyDown;
+	output logic [15:0][15:0] RedPixels;
+	output logic [15:0][15:0] GrnPixels;
+	output logic [6:0]  HEX0;

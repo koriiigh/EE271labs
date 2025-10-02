@@ -1,0 +1,14 @@
+module CyberPlayer(outC, Q, SW);
+	input logic [8:0] SW;
+	input logic [9:0] Q;
+	output logic Q;
+	input logic CLOCK_50, reset;
+	
+	logic CyberSW [9:0];
+	assign CyberSW = {1'b0, SW};
+	
+	
+	comparator cyb(.out(outC) , .A(CyberSW), .B(Q));
+	
+endmodule
+	

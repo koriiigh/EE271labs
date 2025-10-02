@@ -1,0 +1,70 @@
+module User_Input(clk, reset, button, out);
+	input logic button;
+	output logic clk, reset, out;
+	logic DFF1,DFF2;
+	
+		always_ff @(posedge clk) begin  
+
+		 if (reset)  begin
+			 DFF1<=0;
+			 DFF2<=0;
+			 
+
+		 end else begin
+
+			  DFF1 <= button;
+			  DFF2<= DFF1;
+			  end
+			 
+
+	end
+	assign out = DFF2;
+	
+endmodule
+
+
+module User_Input_testbench();
+	// variables
+	logic CLOCK_50, reset, out;
+	logic [3:0] KEY;
+	
+	// dut
+	User_Input dut (.clk(CLOCK_50), .reset, .button(KEY[3]), .out);
+	
+	// clock gen
+	parameter CLOCK_PERIOD = 20;
+	initial begin 
+		 CLOCK_50 = 0; 
+		 forever #(CLOCK_PERIOD/2) CLOCK_50 = ~CLOCK_50; 
+	end 
+	
+	// test cases
+	initial begin
+	reset <= 1;
+	 @(posedge CLOCK_50);
+	 reset <= 0;
+		KEY[3] = 1;
+		 repeat (10) @(posedge CLOCK_50); 
+		 KEY[3] = 0;
+		 repeat (10) @(posedge CLOCK_50);
+		  @(posedge CLOCK_50);
+		KEY[3] = 1;
+		 @(posedge CLOCK_50);
+		KEY[3] = 0;
+		 @(posedge CLOCK_50);
+		KEY[3] = 1;
+		 @(posedge CLOCK_50);
+		KEY[3] = 0;
+		 @(posedge CLOCK_50);
+		KEY[3] = 1;
+		 @(posedge CLOCK_50);
+		KEY[3] = 0;
+		 @(posedge CLOCK_50);
+		KEY[3] = 1;
+		$stop; 
+	end 
+  
+
+endmodule
+
+	

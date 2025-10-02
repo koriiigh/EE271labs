@@ -1,0 +1,29 @@
+module victory (winner, clk ,reset ,LEDR9, LEDR1, L, R)
+	input logic L,R, LEDR9, LEDR1,clk,reset;
+	output logic [6:0] winner;
+	enum{off, PL, PR} ps,ns;
+	
+	always_comb begin
+		case(ps)
+			off: if (LEDR9 & L & ~R)
+				ns = PL;
+				
+				else if (LEDR1 & ~L & R)
+					ns = PR;
+				else
+					ns = off;
+					
+			PL: ns = PL;
+			PR: ns = PR;
+		endcase
+		always_ff @(posedge clk) begin  
+
+		 if (reset)  
+
+			  ps <= off;  
+
+		 else  
+
+			  ps <= ns;  
+
+	end

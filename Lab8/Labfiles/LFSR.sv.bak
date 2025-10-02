@@ -1,0 +1,15 @@
+module LFSR (Q, clk, reset);
+	output logic [15:0] Q;
+	input logic clk, reset;
+	logic xnorQ;
+	
+	assign xnorQ = ~(Q[0] ^ Q[1] ^ Q[3] ^ Q[12]);
+	
+	
+	always_ff @(posedge clk) begin
+		if (reset)
+			Q<= 16'b0000000000000000;
+		else
+			Q <= {xnorQ, Q[15:1]};
+	end
+endmodule
